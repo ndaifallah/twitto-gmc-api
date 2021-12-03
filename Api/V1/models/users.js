@@ -4,4 +4,4 @@ const Account = mongoose.model("account", {
   user_name: String,
   password: String,
 });
-module.export = Account;
+module.exports = Account;
