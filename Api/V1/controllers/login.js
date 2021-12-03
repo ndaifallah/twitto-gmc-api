@@ -6,10 +6,20 @@ const Login = async (req, resp) => {
   let token_data = {
     ...req.body,
   };
-  let token = jwt.sign(token_data, "Hello world");
-  resp.status(200).json({
+	let token = jwt.sign(token_data, "Hello world");
+	Message.find({}, (err, messages) => {
+		if (!err) {
+			
+    resp.status(200).json({
     status: "succeded",
     token: token,
-  });
+     })
+		} else {
+			resp.status(300);
+			resp.send("NOT OK");
+		}
+
+  
+  
 };
 module.exports = Login;
