@@ -15,7 +15,7 @@ let Getposts = async (req, res) => {
       let decoded_token = jwt.verify(token, "Hello world");
       console.log(decoded_token);
 
-      Post.find({ user_name: "" })
+      Post.find({})
         .populate("user")
         .exec((err, text) => {
           console.log(text);
