@@ -9,14 +9,15 @@ let Getposts = async (req, res) => {
 	console.log(token);
 	if (!token || token.length == 0) {
 		console.log("Token not sent yet", token);
-		resp.status(403).send("User not founds");
+		res.status(403).json({ status: "User not found" });
 	} else {
 		try {
 			let decoded_token = jwt.verify(token, "Hello world");
 			console.log(decoded_token);
 
-			Post.find({ user_name: "" })
+			Post.find({})
 				.populate("user")
+				.sort({ date: -1 })
 				.exec((err, text) => {
 					console.log(text);
 					if (err == null) {
@@ -29,7 +30,7 @@ let Getposts = async (req, res) => {
 				});
 		} catch (err) {
 			console.log("Token invalid", err);
-			res.status(403).send("You're not authorized, login first");
+			res.status(403).json({ status: "You're not authorized, login first" });
 		}
 	}
 	console.log(user);
