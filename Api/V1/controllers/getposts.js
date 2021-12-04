@@ -15,16 +15,18 @@ let Getposts = async (req, res) => {
 			let decoded_token = jwt.verify(token, "Hello world");
 			console.log(decoded_token);
 
-			Post.find({ user_name: "" }).populate("user").exec((err, text) => {
-				console.log(text)
-				if (err == null) {
-					res.status(200);
-					res.json(text);
-				} else {
-					res.status(300);
-					res.send("NOT OK");
-				}
-			});
+			Post.find({ user_name: "" })
+				.populate("user")
+				.exec((err, text) => {
+					console.log(text);
+					if (err == null) {
+						res.status(200);
+						res.json(text);
+					} else {
+						res.status(300);
+						res.send("NOT OK");
+					}
+				});
 		} catch (err) {
 			console.log("Token invalid", err);
 			res.status(403).send("You're not authorized, login first");

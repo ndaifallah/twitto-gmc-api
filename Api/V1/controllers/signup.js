@@ -3,6 +3,7 @@ var Account = require("../models/users");
 let SignUp = async (req, res) => {
 	console.log(Account);
 	let user_name = req.body.user_name;
+	let password = req.body.password;
 
 	Account.find({ user_name: user_name }, async (err, results) => {
 		if (err == null && results.length > 0) {
@@ -17,6 +18,7 @@ let SignUp = async (req, res) => {
 				res.status(200).json({ status: "User signed up succefully" });
 			} catch (err) {
 				res.status(300).json({ status: "Could not create account" });
+				console.log(err);
 			}
 		}
 	});
