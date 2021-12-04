@@ -3,8 +3,8 @@ let Account = require("../models/users");
 
 const Login = async (req, resp) => {
 	console.log(req.body);
-	let user = req.query.user_name || "";
-	let password = req.query.password || "";
+	let user = req.body.user_name || "";
+	let password = req.body.password || "";
 	// Verifaction de l'identité de la personne
 	let token_data = {
 		...req.body,
