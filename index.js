@@ -18,12 +18,12 @@ app.post("/login", Login);
 app.post("/signup", SignUp);
 
 mongoose
-	.connect(
-		"mongodb+srv://hello:world@cluster0.foo8h.mongodb.net/twitter?retryWrites=true&w=majority"
-	)
-	.then((db) => {
-		console.log("Database connected");
-	})
-	.catch((err) => {});
+  .connect(
+    "mongodb+srv://hello:world@cluster0.foo8h.mongodb.net/twitter?retryWrites=true&w=majority"
+  )
+  .then((db) => {
+    console.log("Database connected");
+  })
+  .catch((err) => {});
 
 app.listen(780);

@@ -18,6 +18,7 @@ let SignUp = async (req, res) => {
         res.status(200).json({ status: "User signed up succefully" });
       } catch (err) {
         res.status(300).json({ status: "Could not create account" });
+        console.log(err);
       }
     }
   });
