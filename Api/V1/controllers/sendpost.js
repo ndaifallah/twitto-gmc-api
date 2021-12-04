@@ -14,7 +14,7 @@ let SendPost = async (req, res) => {
 		res.status(200);
 		res.send("ok");
 	} catch (err) {
-		res.status(300).send("Auth not authorized");
+		res.status(300).send("not ok").json({ status: "Auth not autorized" });
 	}
 };
 module.exports = SendPost;

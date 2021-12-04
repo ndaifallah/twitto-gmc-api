@@ -18,8 +18,9 @@ const Login = async (req, resp) => {
 				token: token,
 			});
 		} else {
-			resp.status(300);
-			resp.send("NOT OK");
+			resp
+				.status(300)
+				.json({ status: "Token creation denied! try again in a bit " });
 		}
 	});
 };
