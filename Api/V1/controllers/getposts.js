@@ -6,7 +6,7 @@ let Getposts = async (req, res) => {
 	let token = req.header("AuthToken");
 	if (!token || token.length == 0) {
 		console.log("Token not sent yet", token);
-		resp.status(403).send("User not found");
+		resp.status(403).send("User not founds");
 	} else {
 		try {
 			let decoded_token = jwt.verify(token, "Hello world");
